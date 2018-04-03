@@ -9,9 +9,11 @@ const puppeteer = require('puppeteer');
   });
   const page = await browser.newPage();
 
+  let width = 400
   await page.setViewport({
-    width: 660,
-    height: 330,
+    width: width,
+    height: 0,
+    isMobile: true,
   });
 
   const html =  `
@@ -26,21 +28,33 @@ const puppeteer = require('puppeteer');
   </html>
 `;
 
- // await page.goto('file:///Users/wangming/workspace/byzai/headless/test.html');
-  await page.goto(`data:text/html,${html}`, {
+  await page.goto('file:///Users/wangming/workspace/byzai/headless/share.html', {
     waitUntil: [
-      'domcontentloaded',
-      'load',
+      'networkidle2',
     ],
-  })
+  });
+  // await page.goto(`data:text/html,${html}`, {
+  //   waitUntil: [
+  //     'domcontentloaded',
+  //     'load',
+  //   ],
+  // })
+
+  // let result = await page.evaluate(
+  //   () => {
+  //     return window.innerWidth;
+  //   }
+  // );
 
   let result = await page.evaluate(
     () => {
-      return window.innerWidth;
+      return window.document.body.clientHeight;
     }
   );
 
-  await page.screenshot({path: 'example.png', fullPage: true});
+  await page.screenshot({path: 'example.png', fullPage: false,
+    clip:{x:0, y:0, width:width, height: result}
+  });
   await browser.close();
 
   console.log(`Detected window.innerWidth to be ${result}.`);

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <title>百人圈</title>
+  <style>
+    * {
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent
+    }
+
+    html {
+      font-size: 16px;
+      position: relative
+    }
+
+    body,div,html {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      vertical-align: baseline
+    }
+
+    body {
+      line-height: 1.5;
+      font-family: PingFangSC-Regular,Helvetica,'Microsoft Yahei',tahoma,sans-serif
+    }
+
+    #root {
+      padding: 3vw;
+    }
+
+    .header {
+      display: flex;
+      margin-bottom: 5vw;
+    }
+
+    .header .partner {
+      display: flex;
+    }
+
+    .header .partner .avatar {
+      width: 15vw;
+      height: 15vw;
+      border-radius: 50%;
+    }
+
+    .header .partner .info {
+      padding: 0 5vw;
+      width: 64vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .header .partner .info .name,
+    .header .partner .info .desc,
+    .header .partner .info .tip {
+      text-overflow:ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .header .partner .info .name {
+      font-size: 1.1875rem;
+    }
+
+    .header .partner .info .desc {
+      font-size: 0.75rem;
+    }
+
+    .header .partner .info .tip {
+      color: #e8524c;
+      font-size: 0.75rem;
+    }
+
+    .header .qrcode {
+      width: 15vw;
+      height: 15vw;
+    }
+
+    .feed {
+
+    }
+
+    .feed .images {
+      display: none;
+    }
+
+    .feed .link {
+      display: none;
+    }
+
+    .feed .title {
+      overflow : hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 10;
+      -webkit-box-orient: vertical;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      margin-bottom: 5vw;
+    }
+
+    .feed .title:empty {
+      margin-bottom: 0vw;
+    }
+
+    .feed.feed-link .title {
+      -webkit-line-clamp: 5;
+    }
+
+    .feed.feed-images .title {
+      -webkit-line-clamp: 5;
+    }
+
+    .feed.feed-images .images {
+      display: block;
+      font-size: 0;
+    }
+
+    .feed.feed-images .images .image {
+      width: 28vw;
+      height: 28vw;
+    }
+
+    .feed.feed-images .images .image:nth-child(3n+1) {
+      margin-right: 5vw;
+    }
+
+    .feed.feed-images .images .image:nth-child(3n+2) {
+      margin-right: 5vw;
+    }
+
+    .feed .link {
+      display: none;
+    }
+
+    .feed.feed-link .link {
+      display: block;
+    }
+
+    .feed.feed-link .link .card {
+      display: block;
+      padding: 2vw;
+      background-color: #f3f3f5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .feed.feed-link .link .card .card-image {
+      width: 20vw;
+      height: 20vw;
+    }
+
+    .feed.feed-link .link .card .card-text {
+      width: 65vw;
+      margin-left: 5vw;
+      max-height: 25vw;
+      overflow : hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <div class="header">
+      <div class="partner">
+        <img class="avatar" src="https://dev-cdn.bzy.ai/avatar/882f6c06-d8e4-657e-3702-0f457d4e4ca7.png" />
+        <div class="info">
+          <div class="name">Meggy跳舞的苹果</div>
+          <div class="desc">央视、北京广播主持人、美食撰稿人</div>
+          <div class="tip">百人群·TOP100的朋友圈</div>
+        </div>
+      </div>
+      <img class="qrcode" src="https://dev-cdn.bzy.ai/avatar/882f6c06-d8e4-657e-3702-0f457d4e4ca7.png" />
+    </div>
+    <div class="feed feed-images">
+      <div class="title">前文有谈到，浏览器是可以并发请求的，这一特点使得其能够更快的加载资源，然而外链脚本在加载时却
+
+        会阻塞其他资源，例如在脚本加载完成之前，它后面 的图片、样式以及其他脚本都处
+        于阻塞状态，直到脚本加载完成后才会开始加载。如果将脚本放在比较靠前的位置，则会影响整个页面的加载速度从而影响用
+        户体 验。解决这一问题的方法有很多，而最简单可依赖的方法就是将脚本尽可能的往后挪，减少对并发下载的 影响。
+      </div>
+      <div class="images">
+        <img class="image" src="https://dev-cdn.bzy.ai/msg/img/cd94a548ae604a3a9ff6cb28befa2c6e.jpg" />
+        <img class="image" src="https://dev-cdn.bzy.ai/msg/img/b4b2b12b7ab74db4b46b76f558992002.jpg" />
+      </div>
+      <div class="link">
+          <div class="card">
+            <img class="card-image" src="https://dev-cdn.bzy.ai/msg/img/030730558c9a4b26807d26b8cbe8ea3d.jpg" />
+            <div class="card-text">这条策略实际上并不一定能减少HTTP请求数，但是却能在某些条件下或者页面刚加载时减少HTTP请求数。对于图片而言，在页面刚加载的时候可以只 加载第一屏，当用户继续往后滚屏的时候才加载后续的图片。这样一来，假如用户只对第一屏的内容感兴趣时，那剩余的图片请求就都节省了。有啊首页曾经的做法 是在加载的时候把第一屏之后的图片地址缓存在Textarea标签中，待用户往下滚屏的时候才“惰性”加载。</div>
+          </div>
+      </div>
+  </div>
+</body>
+
+</html>
