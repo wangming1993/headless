@@ -11,7 +11,7 @@ const ejs = require("ejs");
   });
   const page = await browser.newPage();
 
-  let width = 375;
+  const width = 375;
   await page.setViewport({
     width: width,
     height: 0,
